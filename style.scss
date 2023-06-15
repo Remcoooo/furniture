@@ -32,7 +32,6 @@
                         "t2"
                         "i3";
     height: 100vh;
-    max-width: 100vw;
   }
 
   .hamburger-menu {
@@ -199,7 +198,7 @@
 // Bottom side
 
 .image-bottom-left {
-  background: url("/images/image-about_dark.jpg") no-repeat center center;
+  background: url("images/image-about_dark.jpg") no-repeat center center;
   background-size: cover;
   grid-area: i2;
 }
@@ -223,7 +222,7 @@
 }
 
 .image-bottom-right {
-  background: url("/images/image-about_light.jpg") no-repeat center center;
+  background: url("images/image-about_light.jpg") no-repeat center center;
   background-size: cover;
   grid-area: i3;
 }
