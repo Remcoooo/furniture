@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- displays site properly based on user's device -->
+  <link rel="icon" type="image/png" sizes="32x32" href="./images/favicon-32x32.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=League+Spartan&display=swap" rel="stylesheet">
+  <title>Furniture homepage</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <main class="container">
+    <section class="image-top">
+      <div class="hamburger-menu" id="hamburger">
+        <svg class="ham h-icon">
+          <use class="h-use" xlink:href="images/icon-hamburger.svg#icon-hamburger"></use>
+        </svg>
+      </div>
+      <div class="primary-nav">
+        <ul class="">
+          <a href="#">home</a>
+          <a href="#">shop</a>
+          <a href="#">about</a>
+          <a href="#">contact</a>
+        </ul>
+      </div>
+    </section>
+    <section class="button">
+      <a class="button-left">
+        <svg class="icon">
+          <use xlink:href="/images/icon-left.svg#icon-left"></use>
+        </svg>
+      </a>
+      <a class="button-right">
+        <svg class="icon">
+          <use xlink:href="images/icon-right.svg#icon-right"></use>
+        </svg>
+      </a>
+    </section>
+    <section class="text-top">
+      <p class="text-title">Discover innovative ways to decorate</p>
+
+      <p class="text-underline">We provide unmatched quality, comfort, and style for property owners across the country.
+        Our experts combine form and function in bringing your vision to life. Create a room in your
+        own style with our collection and make your property a reflection of you and what you love.</p>
+
+        <a href="#">Shop now
+          <svg class="icon">
+            <use xlink:href="images/icon-arrow.svg#icon-arrow"></use>
+          </svg>
+        </a>
+    </section>
+    <section class="image-bottom-left"></section>
+    <section class="text-bottom">
+      <p>About our furniture</p>
+
+      <p>Our multifunctional collection blends design and function to suit your individual taste.
+        Make each room unique, or pick a cohesive theme that best express your interests and what
+        inspires you. Find the furniture pieces you need, from traditional to contemporary styles
+        or anything in between. Product specialists are available to help you create your dream space.</p>
+    </section>
+    <section class="image-bottom-right"></section>
+  </main>
+  <!-- Home
+  Shop
+  About
+  Contact
+
+  Discover innovative ways to decorate
+
+  We provide unmatched quality, comfort, and style for property owners across the country.
+  Our experts combine form and function in bringing your vision to life. Create a room in your
+  own style with our collection and make your property a reflection of you and what you love.
+
+  Shop now
+
+  We are available all across the globe
+
+  With stores all over the world, it's easy for you to find furniture for your home or place of business.
+  Locally, we’re in most major cities throughout the country. Find the branch nearest you using our
+  store locator. Any questions? Don't hesitate to contact us today.
+
+  Shop now
+
+  Manufactured with the best materials
+
+  Our modern furniture store provide a high level of quality. Our company has invested in advanced technology
+  to ensure that every product is made as perfect and as consistent as possible. With three decades of
+  experience in this industry, we understand what customers want for their home and office.
+
+  Shop now
+
+  About our furniture
+
+  Our multifunctional collection blends design and function to suit your individual taste.
+  Make each room unique, or pick a cohesive theme that best express your interests and what
+  inspires you. Find the furniture pieces you need, from traditional to contemporary styles
+  or anything in between. Product specialists are available to help you create your dream space. -->
+
+</body>
+
+<script>
+  const hamburgerMenu = document.querySelector('#hamburger');
+  const primaryNav = document.querySelector('.primary-nav');
+  const icon = document.querySelector('.h-icon .h-use');
+
+  let isNavVisible = false;
+
+  hamburgerMenu.addEventListener('click', function() {
+    if (isNavVisible) {
+      primaryNav.style.display = 'none';
+      icon.setAttribute('xlink:href', 'images/icon-hamburger.svg#icon-hamburger');
+      isNavVisible = false;
+    } else {
+      primaryNav.style.display = 'block';
+      icon.setAttribute('xlink:href', 'images/icon-close.svg#icon-close');
+      isNavVisible = true;
+    }
+  });
+
+  const titles = ['Discover innovative ways to decorate', 'We are available all across the globe', 'Manufactured with the best materials'];
+const texts = [
+  'We provide unmatched quality, comfort, and style for property owners across the country. Our experts combine form and function in bringing your vision to life. Create a room in your own style with our collection and make your property a reflection of you and what you love.',
+  'With stores all over the world, its easy for you to find furniture for your home or place of business. Locally, we’re in most major cities throughout the country. Find the branch nearest you using our store locator. Any questions? Dont hesitate to contact us today.',
+  'Our modern furniture store provide a high level of quality. Our company has invested in advanced technology to ensure that every product is made as perfect and as consistent as possible. With three decades of experience in this industry, we understand what customers want for their home and office.'
+];
+
+const images = ['images/desktop-hero-1.jpg', 'images/desktop-hero-2.jpg', 'images/desktop-hero-3.jpg'];
+let currentImageIndex = 0;
+
+function updateBackgroundAndText() {
+  document.querySelector('.image-top').style.backgroundImage = `url("${images[currentImageIndex]}")`;
+  document.querySelector('.text-title').textContent = titles[currentImageIndex];
+  document.querySelector('.text-underline').textContent = texts[currentImageIndex];
+}
+
+function updateBackgroundAndTextWithDelay() {
+  updateBackgroundAndText();
+  currentImageIndex++;
+  if (currentImageIndex >= images.length) {
+    currentImageIndex = 0;
+  }
+  setTimeout(updateBackgroundAndTextWithDelay, 5000);
+}
+
+updateBackgroundAndTextWithDelay();
+
+document.querySelector('.button-left').addEventListener('click', function() {
+  currentImageIndex--;
+  if (currentImageIndex < 0) {
+    currentImageIndex = images.length - 1;
+  }
+  updateBackgroundAndText();
+});
+
+document.querySelector('.button-right').addEventListener('click', function() {
+  currentImageIndex++;
+  if (currentImageIndex >= images.length) {
+    currentImageIndex = 0;
+  }
+  updateBackgroundAndText();
+});
+</script>
+</html>
